@@ -171,28 +171,46 @@ const personalMovieDB = {
         }
     },
     writeYourGenres: function () {
-        for (let i=1; i<=3; i++) {
-            personalMovieDB.genres[i-1] = prompt(`Ваш любимый жанр под номером ${i}`);
-            while (personalMovieDB.genres[i-1] == '' || personalMovieDB.genres[i-1] == null) {
-                personalMovieDB.genres[i-1] = prompt(`Ваш любимый жанр под номером ${i}`);
-            } 
+        // Первый вариант:
+        // for (let i=1; i<=3; i++) {
+        //     let genre = prompt(`Ваш любимый жанр под номером ${i}`);
+
+        //     if (genre == '' || genre == null) {
+        //         console.log('Вы ввели некорректные данные или не ввели их вовсе');
+        //         i--;
+        //     } else {
+        //         personalMovieDB.genres[i-1] = genre;
+        //     }
+        //
+        // Второй вариант:
+            for (let i = 1; i < 2; i++) {
+                let genres = prompt('Введите ваши любимые жанры через запятую').toLowerCase();
+
+                if (genres === '' || genres == null) {
+                    console.log('Вы ввели некорректные данные или не ввели их вовсе');
+                    i--;
+                } else {
+                    personalMovieDB.genres = genres.split(', ');
+                    personalMovieDB.genres.sort();
+                }
+
         }
         personalMovieDB.genres.forEach(function(k, j) {
-            console.log(`Любимый жанр ${j+1} - это ${k}`);
+            console.log(`Любимый жанр ${j + 1} - это ${k}`);
         });
     },
     toggleVisibleMyDB: function() {
-        if (!personalMovieDB.privat) {
-            personalMovieDB.privat = true; 
-        } else {
+        if (personalMovieDB.privat) {
             personalMovieDB.privat = false; 
+        } else {
+            personalMovieDB.privat = true; 
         }
     }
 };
 
-personalMovieDB.start();
-personalMovieDB.rememberMyFilms();
-personalMovieDB.detectPersonalLevel();
-personalMovieDB.showMyDB(personalMovieDB.privat);
-personalMovieDB.toggleVisibleMyDB();
-personalMovieDB.writeYourGenres();
+// personalMovieDB.start();
+// personalMovieDB.rememberMyFilms();
+// personalMovieDB.detectPersonalLevel();
+// personalMovieDB.showMyDB(personalMovieDB.privat);
+// personalMovieDB.toggleVisibleMyDB();
+// personalMovieDB.writeYourGenres();
