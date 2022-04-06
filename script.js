@@ -165,8 +165,8 @@ const personalMovieDB = {
             console.log("Произошла ошибка");
         }
     },
-    showMyDB: function () {
-        if (!personalMovieDB.privat) {
+    showMyDB: function (hidden) {
+        if (!hidden) {
             console.log(personalMovieDB);
         }
     },
@@ -193,17 +193,6 @@ const personalMovieDB = {
 personalMovieDB.start();
 personalMovieDB.rememberMyFilms();
 personalMovieDB.detectPersonalLevel();
-personalMovieDB.showMyDB();
+personalMovieDB.showMyDB(personalMovieDB.privat);
 personalMovieDB.toggleVisibleMyDB();
 personalMovieDB.writeYourGenres();
-
-// console.log(personalMovieDB);
-
-/*
-2) Создать метод toggleVisibleMyDB, который при вызове будет проверять свойство privat. Если оно false - он
-переключает его в true, если true - переключает в false. Протестировать вместе с showMyDB.
-
-3) В методе writeYourGenres запретить пользователю нажать кнопку "отмена" или оставлять пустую строку. 
-Если он это сделал - возвращать его к этому же вопросу. После того, как все жанры введены - 
-при помощи метода forEach вывести в консоль сообщения в таком виде:
-"Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
