@@ -1,3 +1,3 @@
-# full_JS_education
+# JavaScriptEducation
 
 Полный курс по JavaScript + React - с нуля до результата
